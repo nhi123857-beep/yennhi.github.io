@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursing Master Ultra - Tư Duy Hệ Thống</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #00acc1; --correct: #66bb6a; --wrong: #ef5350; --accent: #fbc02d; --bg: #f0f4f8; }
+        body { font-family: 'Lexend', sans-serif; background: var(--bg); padding: 20px; color: #2c3e50; }
+        .container { max-width: 1000px; margin: auto; background: white; padding: 40px; border-radius: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        
+        /* Giới thiệu & Lý thuyết Mindmap */
+        header, .intro-box { text-align: center; margin-bottom: 40px; }
+        .mindmap-theory { background: #fff9c4; padding: 20px; border-radius: 20px; border-left: 8px solid var(--accent); margin-bottom: 30px; }
+
+        /* Khối Sơ đồ tư duy nâng cấp */
+        .section-box { border: 2px solid #e1f5fe; border-radius: 30px; padding: 25px; margin-bottom: 50px; background: #fff; transition: 0.3s; }
+        .section-box:hover { box-shadow: 0 10px 30px rgba(0,172,193,0.1); }
+        .topic-header { background: var(--primary); color: white; padding: 10px 30px; border-radius: 50px; display: inline-block; font-weight: bold; margin-bottom: 20px; }
+
+        .mindmap-container { background: #f8fdff; border: 2px solid #b2ebf2; border-radius: 20px; padding: 20px; margin-bottom: 20px; }
+        .nodes-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .node { background: white; border: 2px solid var(--primary); padding: 10px 18px; border-radius: 15px; font-weight: bold; font-size: 0.9em; box-shadow: 4px 4px 0px var(--primary); }
+
+        .quick-memo { background: #e8f5e9; padding: 12px; border-radius: 12px; border-left: 5px solid #4caf50; margin-bottom: 10px; font-weight: bold; color: #2e7d32; }
+        .deep-explain { background: #f3f3f3; padding: 12px; border-radius: 12px; font-size: 0.9em; color: #555; line-height: 1.5; }
+
+        /* Quiz */
+        .quiz-area { background: #fffde7; padding: 25px; border-radius: 25px; margin-top: 20px; }
+        .case-study { color: #1565c0; font-weight: bold; display: block; margin-bottom: 15px; font-size: 1em; }
+        .option { display: block; background: white; padding: 14px; margin: 10px 0; border-radius: 15px; border: 2px solid #eee; cursor: pointer; transition: 0.3s; }
+        .option:hover { border-color: var(--primary); transform: translateX(8px); }
+        .correct { background: var(--correct) !important; color: white; border-color: #43a047; }
+        .wrong { background: var(--wrong) !important; color: white; border-color: #c62828; text-decoration: line-through; }
+        .feedback { margin-top: 15px; padding: 15px; border-radius: 12px; display: none; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🩺 Chibi Nursing Ultra Pro</h1>
+        <p>Học bằng hình ảnh - Nhớ bằng cơ chế - Làm bằng trái tim</p>
+    </header>
+
+    <div class="intro-box">
+        <p>Chào bạn đồng nghiệp tương lai! Ngành Điều dưỡng là trái tim của bệnh viện. Để làm tốt, bạn không chỉ cần đôi tay khéo léo mà còn cần một <b>tư duy hệ thống</b> để xử lý tình huống lâm sàng chính xác nhất.</p>
+    </div>
+
+    <div class="mindmap-theory">
+        <h3>🧠 Bí kíp Sơ đồ tư duy & Ghi nhớ</h3>
+        <p>Sơ đồ tư duy giúp kết nối các "điểm" kiến thức. Kết hợp với <b>Ghi nhớ nhanh</b> (tổng hợp từ khóa) và <b>Giải thích</b> (hiểu bản chất), bạn sẽ không bao giờ bị quên kiến thức dù trong áp lực phòng cấp cứu.</p>
+    </div>
+
+    <div id="content">
+
+        <div class="section-box">
+            <div class="topic-header">1. Suy thận & Nephron</div>
+            <div class="mindmap-container">
+                <div class="nodes-container">
+                    <div class="node">Thận</div><div class="node">1 Triệu Nephron</div><div class="node">Lọc Creatinine</div><div class="node">Thải nước thừa</div>
+                </div>
+                <div class="quick-memo">💡 Ghi nhớ: Thận suy - Nephron hỏng - Creatinine vọt - Phù toàn thân.</div>
+                <div class="deep-explain"><b>Giải thích:</b> Nephron là đơn vị chức năng. Khi Nephron hỏng, màng lọc cầu thận bị tắc, Creatinine (chất độc từ cơ) không thoát ra được nên tích tụ trong máu, đồng thời nước không được thải ra gây nên tình trạng phù.</div>
+            </div>
+            <div class="quiz-area" id="q1">
+                <span class="case-study">📍 BN suy thận giai đoạn 4, da sạm, phù mặt.</span>
+                <p>Cấu trúc nào đang mất khả năng lọc chất độc?</p>
+                <div class="option" onclick="check(this, 'q1', true, 'Đúng! Suy thận là suy các Nephron.')">A. Các đơn vị Nephron</div>
+                <div class="option" onclick="check(this, 'q1', false, 'Neuron chỉ có ở não/thần kinh.')">B. Các tế bào Neuron</div>
+                <div class="option" onclick="check(this, 'q1', false, 'Phế nang giúp trao đổi khí.')">C. Phế nang</div>
+                <div class="option" onclick="check(this, 'q1', false, 'Không liên quan lọc máu.')">D. Tế bào gan</div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="topic-header">2. Nhịp thở Suy hô hấp</div>
+            <div class="mindmap-container">
+                <div class="nodes-container">
+                    <div class="node">Bình thường: 16-20</div><div class="node">Nhanh: >24 (Đói Oxy)</div><div class="node">Chậm: <12 (Kiệt sức)</div>
+                </div>
+                <div class="quick-memo">💡 Ghi nhớ: Thở nhanh là "đòi nợ" Oxy, thở chậm là "hết pin" hô hấp.</div>
+                <div class="deep-explain"><b>Giải thích:</b> Khi phổi tổn thương, nồng độ CO2 máu tăng kích thích trung tâm hô hấp làm BN thở nhanh để bù. Nếu BN thở chậm lại trong khi vẫn tím tái, đó là dấu hiệu cơ hô hấp đã quá mệt mỏi, sắp ngưng thở.</div>
+            </div>
+            <div class="quiz-area" id="q2">
+                <span class="case-study">📍 BN viêm phổi, thở co kéo cơ liên sườn, tím môi.</span>
+                <p>Nhịp thở nào chứng tỏ tình trạng nguy kịch đang diễn ra?</p>
+                <div class="option" onclick="check(this, 'q2', false, 'Nhịp thở quá bình thường.')">A. 18 lần/phút</div>
+                <div class="option" onclick="check(this, 'q2', true, 'Chuẩn! BN đang thở gấp để bù oxy.')">B. 32 lần/phút</div>
+                <div class="option" onclick="check(this, 'q2', false, 'Nhịp này cũng khá ổn.')">C. 20 lần/phút</div>
+                <div class="option" onclick="check(this, 'q2', false, 'Thở nhanh nhẹ, chưa phải cấp cứu.')">D. 24 lần/phút</div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="topic-header">3. Tiêm bắp & Dây thần kinh tọa</div>
+            <div class="mindmap-container">
+                <div class="nodes-container">
+                    <div class="node">Chia mông làm 4</div><div class="node">Tiêm: 1/4 Trên - Ngoài</div><div class="node">Đâm vuông góc 90°</div>
+                </div>
+                <div class="quick-memo">💡 Ghi nhớ: "Trên ngoài" thì tươi, "Trong dưới" thì liệt.</div>
+                <div class="deep-explain"><b>Giải thích:</b> Dây thần kinh hông to (lớn nhất cơ thể) chạy từ thắt lưng đi qua giữa và phần dưới của mông. Chỉ có vùng 1/4 trên ngoài là nơi tập trung cơ dày và xa dây thần kinh nhất.</div>
+            </div>
+            <div class="quiz-area" id="q3">
+                <span class="case-study">📍 Bạn cần tiêm thuốc giảm đau bắp mông cho BN.</span>
+                <p>Vị trí nào là an toàn y khoa?</p>
+                <div class="option" onclick="check(this, 'q3', true, 'Đúng! Quy tắc vàng tiêm mông.')">A. 1/4 trên ngoài</div>
+                <div class="option" onclick="check(this, 'q3', false, 'Cực kỳ nguy hiểm!')">B. 1/4 dưới trong</div>
+                <div class="option" onclick="check(this, 'q3', false, 'Dễ đâm trúng thần kinh.')">C. Chính giữa mông</div>
+                <div class="option" onclick="check(this, 'q3', false, 'Vùng này có nhiều mạch máu lớn.')">D. 1/4 trên trong</div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="topic-header">4. Adrenaline - Phản vệ độ 2</div>
+            <div class="mindmap-container">
+                <div class="nodes-container">
+                    <div class="node">Ngừng thuốc</div><div class="node">Adrenaline 1mg</div><div class="node">Tiêm bắp đùi</div><div class="node">1/2 ống ngay</div>
+                </div>
+                <div class="quick-memo">💡 Ghi nhớ: Ngứa - Khó thở - Tụt huyết áp ➡️ Tiêm bắp Adrenaline ngay!</div>
+                <div class="deep-explain"><b>Giải thích:</b> Adrenaline làm co mạch (nâng HA) và giãn phế quản (giúp BN thở được). Tiêm bắp đùi là tốt nhất vì vùng này tưới máu tốt, thuốc ngấm nhanh hơn tiêm bắp mông hay dưới da.</div>
+            </div>
+            <div class="quiz-area" id="q4">
+                <span class="case-study">📍 BN ngứa, tức ngực, HA 80/50 sau khi tiêm thuốc.</span>
+                <p>Hành động xử trí đầu tiên?</p>
+                <div class="option" onclick="check(this, 'q4', true, 'Chính xác! Cứu sống BN trong tích tắc.')">A. Tiêm bắp Adrenaline</div>
+                <div class="option" onclick="check(this, 'q4', false, 'Truyền dịch lúc này không ưu tiên bằng thuốc.')">B. Truyền dịch nhanh</div>
+                <div class="option" onclick="check(this, 'q4', false, 'Phản vệ kịch phát sẽ ngưng tim sớm.')">C. Đợi bác sĩ tới</div>
+                <div class="option" onclick="check(this, 'q4', false, 'Không có tác dụng nâng HA.')">D. Cho thở Oxy</div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="topic-header">6. Hồi sinh Tim Phổi (CPR)</div>
+            <div class="mindmap-container">
+                <div class="nodes-container">
+                    <div class="node">Tần số: 100-120 l/p</div><div class="node">Độ sâu: 5cm</div><div class="node">Tỉ lệ: 30 ép - 2 thổi</div>
+                </div>
+                <div class="quick-memo">💡 Ghi nhớ: Ép nhanh, ép mạnh, không rời tay, để lồng ngực nở hết.</div>
+                <div class="deep-explain"><b>Giải thích:</b> Ép tim mục đích là thay thế quả tim đẩy máu lên não. Tần số 100-120 giúp duy trì áp lực tưới máu não tốt nhất. Nếu ép quá nhanh, tim không kịp chứa máu; ép quá chậm, máu không lên được não.</div>
+            </div>
+            <div class="quiz-area" id="q6">
+                <span class="case-study">📍 Bạn phát hiện BN ngưng tim ngưng thở trên giường.</span>
+                <p>Kỹ thuật ép tim nào sau đây là đúng?</p>
+                <div class="option" onclick="check(this, 'q6', true, 'Đúng! Đây là tiêu chuẩn AHA quốc tế.')">A. Ép sâu 5cm, tần số 110 lần/phút</div>
+                <div class="option" onclick="check(this, 'q6', false, 'Quá nông, máu không đi được.')">B. Ép sâu 2cm, tần số 100 lần/phút</div>
+                <div class="option" onclick="check(this, 'q6', false, 'Quá chậm, não sẽ thiếu oxy.')">C. Ép sâu 5cm, tần số 60 lần/phút</div>
+                <div class="option" onclick="check(this, 'q6', false, 'Quá nhanh, tim không kịp đầy máu.')">D. Ép sâu 7cm, tần số 150 lần/phút</div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="topic-header">11. Cấp cứu Hạ đường huyết</div>
+            <div class="mindmap-container">
+                <div class="nodes-container">
+                    <div class="node">Đường huyết < 3.9 mmol/l</div><div class="node">Run - Đói - Vã mồ hôi</div><div class="node">Uống nước đường</div>
+                </div>
+                <div class="quick-memo">💡 Ghi nhớ: Run tay, đói lả, mồ hôi tuôn ➡️ Ăn đường/kẹo gấp kẻo hôn mê.</div>
+                <div class="deep-explain"><b>Giải thích:</b> Não chỉ sử dụng năng lượng từ đường Glucose. Khi đường huyết hạ thấp, não bị "đói" sớm nhất dẫn đến run tay, lơ mơ và có thể tử vong nhanh hơn cả tăng đường huyết.</div>
+            </div>
+            <div class="quiz-area" id="q11">
+                <span class="case-study">📍 BN tiểu đường bỏ bữa sáng, giờ thấy chóng mặt, vã mồ hôi lạnh.</span>
+                <p>Bạn cần cho BN làm gì ngay?</p>
+                <div class="option" onclick="check(this, 'q11', true, 'Đúng! Phải nâng đường huyết ngay.')">A. Cho uống cốc nước đường ấm</div>
+                <div class="option" onclick="check(this, 'q11', false, 'Cực nguy hiểm, làm BN hôn mê thêm.')">B. Tiêm thêm một mũi Insulin</div>
+                <div class="option" onclick="check(this, 'q11', false, 'Không giúp ích gì cho đường huyết.')">C. Cho nằm nghỉ, uống nước lọc</div>
+                <div class="option" onclick="check(this, 'q11', false, 'Chỉ dùng khi BN đã hôn mê.')">D. Tiêm bắp Adrenaline</div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+
+        <div class="section-box">
+            <div class="topic-header">15. Cố định xương gãy</div>
+            <div class="mindmap-container">
+                <div class="nodes-container">
+                    <div class="node">Bất động</div><div class="node">Qua 2 khớp</div><div class="node">Không nắn xương</div><div class="node">Giảm đau tốt</div>
+                </div>
+                <div class="quick-memo">💡 Ghi nhớ: Nẹp dài hơn xương, cố định hai đầu, giữ nguyên biến dạng.</div>
+                <div class="deep-explain"><b>Giải thích:</b> Mục đích của nẹp là biến đoạn xương gãy thành một khối thống nhất với nẹp. Phải qua 2 khớp (khớp trên và dưới đoạn gãy) để triệt tiêu cử động của các cơ bám vào xương, tránh làm đầu xương sắc nhọn đâm thủng mạch máu, thần kinh.</div>
+            </div>
+            <div class="quiz-area" id="q15">
+                <span class="case-study">📍 BN nghi ngờ gãy xương đùi sau tai nạn.</span>
+                <p>Nguyên tắc cố định nẹp nào là quan trọng nhất?</p>
+                <div class="option" onclick="check(this, 'q15', true, 'Đúng! Phải bất động khớp háng và khớp gối.')">A. Nẹp phải cố định được khớp háng và khớp gối</div>
+                <div class="option" onclick="check(this, 'q15', false, 'Gây đau và tổn thương thêm.')">B. Phải kéo thẳng chân ra trước khi nẹp</div>
+                <div class="option" onclick="check(this, 'q15', false, 'Nẹp ngắn không có tác dụng bất động.')">C. Chỉ cần nẹp ngắn tại chỗ gãy</div>
+                <div class="option" onclick="check(this, 'q15', false, 'Làm nặng thêm tình trạng.')">D. Băng bó thật chặt vết thương</div>
+                <div class="feedback"></div>
+            </div>
+        </div>
+
+        </div>
+
+    <footer>
+        <p>© 2026 Chibi Nursing Ultra - Kiến thức là sức mạnh, Thái độ là thành công ❤️</p>
+    </footer>
+</div>
+
+<audio id="snd-right" src="https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3"></audio>
+<audio id="snd-wrong" src="https://assets.mixkit.co/active_storage/sfx/2018/2018-preview.mp3"></audio>
+
+<script>
+    function check(el, qId, isRight, msg) {
+        const parent = document.getElementById(qId);
+        const fb = parent.querySelector('.feedback');
+        const opts = parent.querySelectorAll('.option');
+        fb.style.display = 'block'; fb.innerText = msg;
+
+        if(isRight) {
+            el.classList.add('correct'); document.getElementById('snd-right').play();
+            fb.style.background = '#e8f5e9'; fb.style.color = '#2e7d32';
+            opts.forEach(o => o.style.pointerEvents = 'none');
+        } else {
+            el.classList.add('wrong'); document.getElementById('snd-wrong').play();
+            fb.style.background = '#ffebee'; fb.style.color = '#c62828';
+            setTimeout(() => { el.classList.remove('wrong'); }, 1500);
+        }
+    }
+</script>
+</body>
+</html>
